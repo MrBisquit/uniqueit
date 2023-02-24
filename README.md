@@ -3,4 +3,4 @@
 
 A quick and easy way of generating UUIDs and other unique things.
 
-## Read docs for more info
+#### Read wiki for more info
