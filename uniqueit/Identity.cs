@@ -38,7 +38,7 @@
         /// </summary>
         /// <param name="seed">A seed for the random class can use</param>
         /// <param name="length">How long the string is (defaulted to 25)</param>
-        /// <returns></returns>
+        /// <returns>A string generated using the parameters provided</returns>
         public static string RandomString(int? seed, int length = 25)
         {
             string output = "";
