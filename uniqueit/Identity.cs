@@ -2,6 +2,7 @@
 {
     public class Identity
     {
+        private static char[] chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890".ToCharArray();
         /// <summary>
         /// Generates a string of 25 characters that use the characters in the seed as an input.
         /// </summary>
@@ -31,6 +32,24 @@
             }
 
             return UUID;
+        }
+        public static string RandomString(int? seed, int length = 25)
+        {
+            string output = "";
+            Random r;
+            if(seed.HasValue)
+            {
+                r = new Random(seed.Value);
+            } else
+            {
+                r = new Random();
+            }
+            for (int i = 0; i < length; i++)
+            {
+                output += chars[r.Next(chars.Length)];
+            }
+
+            return output;
         }
     }
 }

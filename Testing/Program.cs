@@ -5,10 +5,13 @@
         static void Main(string[] args)
         {
             List<string> list = new List<string>();
-            list.Add("mrbisquit");
+            list.Add("test");
             list.Add("test@example.com");
-            list.Add("abcdefghjiklpoyrt256346rsdfsdbyn3a5ntg");
             Console.WriteLine(uniqueit.Identity.GenerateUUID(list, 5));
+            for (int i = 0; i < 1000; i++)
+            {
+                Console.WriteLine(uniqueit.Identity.RandomString(i));
+            }
         }
     }
 }
