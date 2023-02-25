@@ -2,9 +2,6 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
-
 | Version | Supported          | End of support | Last updated   |
 | ------- | ------------------ | -------------- | -------------- |
 | 1.1.x   | :white_check_mark: | 26/02/2023     | 26/02/2023     |
