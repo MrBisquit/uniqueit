@@ -1,4 +1,6 @@
-﻿namespace Testing
+﻿using System.Text;
+
+namespace Testing
 {
     internal class Program
     {
@@ -27,6 +29,15 @@
             Console.WriteLine(guidobject.ToString());
             Console.WriteLine(uniqueit.Identity.RandomInt(0, 100, 5));
             Console.WriteLine(uniqueit.Identity.RandomDouble(0, 100, 5));
+            uniqueit.UniqueID uid = new uniqueit.UniqueID(list, 5);
+            byte[] b = uid.GenerateKey();
+            string c = "";
+            for (int i = 0; i < guidbytes.Length; i++)
+            {
+                c += b[i].ToString();
+            }
+            Console.WriteLine(c);
+            Console.WriteLine(Encoding.ASCII.GetString(b));
         }
     }
 }

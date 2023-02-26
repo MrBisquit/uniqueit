@@ -1,4 +1,7 @@
-﻿namespace uniqueit
+﻿using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+
+namespace uniqueit
 {
     public class Identity
     {
@@ -132,6 +135,62 @@
                 r = new Random();
             }
             return r.NextDouble() * (maxValue - minValue) + minValue;
+        }
+    }
+
+    public class UniqueID
+    {
+        string? uniqueID_string;
+        List<string>? _seed;
+        int? _id;
+        int? _length;
+        public UniqueID(List<string> seed, int? id, int length = 25)
+        {
+            uniqueID_string = Identity.UniqueID(seed, id, length);
+            _seed = seed;
+            _id = id;
+            _length = length;
+        }
+        public void Dispose()
+        {
+            this.uniqueID_string = null;
+            _seed = null;
+            _id = null;
+            _length = null;
+        }
+        public List<string>? GetSeed()
+        {
+            return _seed;
+        }
+        public int? GetId()
+        {
+            return _id;
+        }
+        public int? GetLength()
+        {
+            return _length;
+        }
+        public byte[] GenerateKey(int saltSize = 16, int iterations = 10000, int keySize = 256 / 8)
+        {
+            /*int saltSize = 16;
+            int iterations = 10000;
+            int keySize = 256 / 8;*/
+            string input = (string)uniqueID_string;
+
+            byte[] salt = new byte[saltSize];
+            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+            {
+                rng.GetBytes(salt);
+            }
+
+            using (Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(input, salt, iterations))
+            {
+                byte[] key = pbkdf2.GetBytes(keySize);
+                byte[] result = new byte[keySize + saltSize];
+                Buffer.BlockCopy(salt, 0, result, 0, saltSize);
+                Buffer.BlockCopy(key, 0, result, saltSize, keySize);
+                return result;
+            }
         }
     }
 }
