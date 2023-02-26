@@ -144,6 +144,10 @@ namespace uniqueit
         List<string>? _seed;
         int? _id;
         int? _length;
+        /// <summary>
+        /// Creates a new UniqueID
+        /// </summary>
+        /// <param name="seed">A list of strings can include username, name, email and any others that can effect how the UniqueID is generated.</param>
         public UniqueID(List<string> seed, int? id, int length = 25)
         {
             uniqueID_string = Identity.UniqueID(seed, id, length);
@@ -151,6 +155,9 @@ namespace uniqueit
             _id = id;
             _length = length;
         }
+        /// <summary>
+        /// Clears all of the varaibles to hopefully save up on memeory.
+        /// </summary>
         public void Dispose()
         {
             this.uniqueID_string = null;
@@ -170,6 +177,10 @@ namespace uniqueit
         {
             return _length;
         }
+        /// <summary>
+        /// Generates a key using the UniqueID's data.
+        /// </summary>
+        /// <returns>A key</returns>
         public byte[] GenerateKey(int saltSize = 16, int iterations = 10000, int keySize = 256 / 8)
         {
             /*int saltSize = 16;
