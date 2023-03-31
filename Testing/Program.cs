@@ -38,6 +38,8 @@ namespace Testing
             }
             Console.WriteLine(c);
             Console.WriteLine(Encoding.ASCII.GetString(b));
+
+            Console.WriteLine(uniqueit.UUID.NewUUID6().ToString());
         }
     }
 }

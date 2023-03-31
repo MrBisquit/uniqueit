@@ -204,4 +204,38 @@ namespace uniqueit
             }
         }
     }
+
+    public static class UUID
+    {
+        public static UUID_6 NewUUID6() { return new UUID_6(); }
+    }
+
+    public class UUID_6
+    {
+        string UUID_string = "";
+        public UUID_6()
+        {
+            NewUUID();
+        }
+
+        public void NewUUID()
+        {
+            string first_8 = Identity.RandomString(null, 8);
+
+            string second_4 = Identity.RandomString(null, 4);
+            string third_4 = Identity.RandomString(null, 4);
+            string fourth_4 = Identity.RandomString(null, 4);
+            string fifth_4 = Identity.RandomString(null, 4);
+            string sixth_4 = Identity.RandomString(null, 4);
+
+            string seventh_12 = Identity.RandomString(null, 12);
+
+            UUID_string = $"{first_8}-{second_4}-{third_4}-{fourth_4}-{fifth_4}-{sixth_4}-{seventh_12}";
+        }
+
+        public override string ToString()
+        {
+            return UUID_string;
+        }
+    }
 }
