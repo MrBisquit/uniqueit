@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using uniqueit;
 
 namespace Testing
 {
@@ -40,6 +41,15 @@ namespace Testing
             Console.WriteLine(Encoding.ASCII.GetString(b));
 
             Console.WriteLine(uniqueit.UUID.NewUUID6().ToString());
+
+            for (int i = 0; i < 100; i++)
+            {
+                Console.WriteLine(uniqueit.UUID.NewUUID6().ToString());
+            }
+
+            Console.WriteLine(((8 + 4 + 4 + 4 + 4 + 4 + 12) * (8 + 4 + 4 + 4 + 4 + 4 + 12)).ToString() + " possible combinations for UniqueID's UUID 6");
+
+            Console.WriteLine((8 + 4 + 4 + 4 + 4 + 4 + 12).ToString());
         }
     }
 }
