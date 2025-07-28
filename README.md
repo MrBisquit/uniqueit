@@ -1,3 +1,7 @@
+> [!WARNING]  
+> This project is no longer maintained and should not be used.
+> Instead, use [WTDawson.PersistentID](https://www.nuget.org/packages/WTDawson.PersistentID/) ([GitHub link](https://github.com/MrBisquit/WTDawson.PersistentID/)).
+
 # uniqueit
 ### Available on NuGet at https://www.nuget.org/packages/uniqueit/
 
